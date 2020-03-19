@@ -1,8 +1,9 @@
-import 'package:app_front/Dependencies/fetch.dart';
 import 'package:flutter/material.dart';
-import './Dependencies/drawer.dart';
-import './Dependencies/card.dart';
 import 'package:ussd/ussd.dart';
+import './Dependencies/drawer.dart';
+import './Dependencies/fetch.dart';
+import './Dependencies/send.dart' ;
+import './Dependencies/card.dart';
 
 void main() => runApp(App());
 
@@ -81,6 +82,19 @@ class _MyAppState extends State<MyApp> {
                 return Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) => Fetch(
+                      uri: uri,
+                      port: port,
+                    ),
+                  ),
+                );
+              },
+            ),RaisedButton(
+              child: Text("Send"),
+              onPressed: () {
+                print("Pressed");
+                return Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Send(
                       uri: uri,
                       port: port,
                     ),
