@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import './fetch.dart' ;
+import './unimplemented.dart' ;
 
 class MainDrawer extends StatefulWidget {
   final String uName;
   final String uId;
   final String uIn;
-  final String uri ;
+  final String uri;
+  final String port;
 
   final List<String> cList = [
     "Club 1",
@@ -30,7 +31,8 @@ class MainDrawer extends StatefulWidget {
     this.uName,
     this.uId,
     this.uIn,
-    this.uri ,
+    this.uri,
+    this.port,
     /*this.cList*/
   });
 
@@ -41,7 +43,8 @@ class MainDrawer extends StatefulWidget {
         uIn: "HW",
         cList: cList,
         icList: icList,
-        uri: uri ,
+        uri: uri,
+        port: port,
       );
 }
 
@@ -49,7 +52,8 @@ class _MainDrawerState extends State<MainDrawer> {
   final String uName;
   final String uId;
   final String uIn;
-  final String uri ;
+  final String uri;
+  final String port;
   final List<String> cList;
   final List<IconData> icList;
 
@@ -63,8 +67,7 @@ class _MainDrawerState extends State<MainDrawer> {
     child: Scaffold(
         appBar: AppBar(),
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: pres,
-            label: Text("HelloWorld"))),
+            onPressed: pres, label: Text("HelloWorld"))),
   );
 
   List<Widget> clList = [];
@@ -83,9 +86,18 @@ class _MainDrawerState extends State<MainDrawer> {
     ),
   ];
 
-  _MainDrawerState({this.uName, this.uId, this.uIn, this.cList, this.icList,this.uri});
+  _MainDrawerState({
+    this.uName,
+    this.uId,
+    this.uIn,
+    this.cList,
+    this.icList,
+    this.uri,
+    this.port,
+  });
 
   void createList(context) {
+    print("Drawer $uri:$port");
     clList = [
       UserAccountsDrawerHeader(
         accountName: Text('$uName'),
@@ -113,7 +125,7 @@ class _MainDrawerState extends State<MainDrawer> {
         trailing: Icon(tI),
         onTap: () => Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (BuildContext context) => Fetch(uri:uri) ,
+            builder: (BuildContext context) => Unimplemented() ,
           ),
         ),
       );
